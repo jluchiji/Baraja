@@ -1,0 +1,26 @@
+{
+  "name": "baraja",
+  "version": "1.0.0",
+  "main": [
+    "js/jquery.baraja.js",
+    "css/baraja.css"
+  ],
+  "homepage": "https://github.com/codrops/Baraja",
+  "authors": [
+    "botelho"
+  ],
+  "description": "Spread your HTML elements like a stack of cards.",
+  "keywords": [
+    "card",
+    "stack",
+    "jquery"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
