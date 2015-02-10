@@ -292,12 +292,16 @@
 					return Number( $( this ).css( 'z-index' ) ) === cond;
 
 				} ),
+				$dest = this.$items.filter(function () {
+					var c = dir === 'next' ? self.itemZIndexMin + self.itemsCount - 2 : self.itemZIndexMin;
+					return Number($(this).css('z-index')) === c;
+				}),
 				translation = dir === 'next' ? $item.outerWidth( true ) + extra : $item.outerWidth( true ) * -1 - extra,
 				rotation = dir === 'next' ? 5 : 5 * -1;
 
 			this._setTransition( $item, 'transform', this.options.speed, this.options.easing );
 
-			self.$el.trigger('changing.baraja');
+			self.$el.trigger('changing.baraja', $dest);
 			this._applyTransition( $item, { transform : 'translate(' + translation + 'px) rotate(' + rotation + 'deg)' }, function() {
 
 				$item.off( self.transEndEventName );
@@ -305,7 +309,6 @@
 
 				//console.log('Transition Peak');
 				self.$el.trigger('navigating.baraja', {direction: dir});
-				self.$el.trigger('changed.baraja');
 
 				self._applyTransition( $item, { transform : 'translate(0px) rotate(0deg)' }, function() {
 
@@ -313,6 +316,7 @@
 					self.isAnimating = false;
 					self.closed = true;
 					self.$el.trigger('navigated.baraja', {direction: dir});
+					self.$el.trigger('changed.baraja', $dest);
 				} );
 
 			} );
