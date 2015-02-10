@@ -1,6 +1,6 @@
 {
   "name": "baraja",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": [
     "js/jquery.baraja.js",
     "css/baraja.css"
